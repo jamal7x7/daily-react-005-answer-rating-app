@@ -23,10 +23,21 @@ class App extends Component {
               <div className='question-text'>What framework should I learn and why?</div>
               <div className='bar-right' />
             </div>
-
           </div>
 
-          <div className='v-line' />
+          <div className='answer-c'>
+          I use a bunch of them and in my opinion, the best yet to
+          come is still the good old vanilla js! but,  answering your question, try React because It’s easy and it’s fast to create projects with.
+          </div>
+
+          <div className='your-answer-c'>
+            <form action=''>
+              <input type='text' />
+              <button>Answer</button>
+            </form>
+          </div>
+
+          {/* <div className='v-line' /> */}
 
         </div>
 
