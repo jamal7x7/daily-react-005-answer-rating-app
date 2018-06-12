@@ -1,11 +1,13 @@
 body {
   background: #041A3E;
-  font-family: "Lato", "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-family: "open sans", "Lato", "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   color: #EEE;
 }
 
-.App {
+.App-title {
   text-align: center;
+  font-weight: 200;
+  font-size: 28px;
 }
 
 .main-win {
@@ -67,7 +69,7 @@ body {
 .answers .answer-c {
   margin-bottom: 30px;
   display: grid;
-  grid-template-columns: 50px  1fr;
+  grid-template-columns: 50px 1fr;
   grid-template-areas: ' answer-num answer ';
 }
 
@@ -85,6 +87,10 @@ body {
   height: 20px;
   width: 20px;
   color: #EEE;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .answers .answer-c .answer {
@@ -99,6 +105,7 @@ body {
 }
 
 .answers .answer-c .answer .counter {
+  font-weight: bolder;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -110,6 +117,7 @@ body {
   color: rgba(29, 28, 35, 0.7);
   padding: 40px 25px;
   margin: 0;
+  font-size: 15px;
   text-align: left;
   grid-area: answer-text;
 }
@@ -153,7 +161,7 @@ body {
   grid-area: input;
   background: rgba(255, 255, 255, 0.7);
   border: none;
-  font-size: 16px;
+  font-size: 14px;
   color: rgba(4, 26, 62, 0.7);
   outline: none;
   padding-left: 15px;

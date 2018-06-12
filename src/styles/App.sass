@@ -6,7 +6,7 @@ $purplish: #DB8EDA
 $blued: #073175
 $bluew: #5E85C3
 
-$xl: 48px
+$xxl: 50px
 $xl: 34px
 $l: 22px
 $m: 16px
@@ -14,7 +14,7 @@ $s: 14px
 $xs: 11px
 
 
-$main-font: 'Lato', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+$main-font: 'open sans', 'Lato', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 
 body 
   background: $bgd
@@ -23,70 +23,12 @@ body
  
 
 
-.App 
+.App-title
   text-align: center
+  font-weight: 200
+  font-size: 28px
 
 
-// .App-header 
-//   background-color: $bgd
-//   height: 100px
-//   padding: 20px
-//   color: white
-
-
-// .App-title 
-//   font-size: 1.5em
-
-// .main-win
-//   width: 700px
-//   height: 640px
-//   background: $bgm
-//   margin: 0 auto
-//   padding: 10px
-
-  // .v-line
-  //   width: 2px
-  //   background: $blued
-  //   height: 500px
-  //   position: relative
-  //   left: 60px
-
-  // .question-c
-  //   .answers-num
-  //     padding: 0 60px
-  //     color: $bluew
-  //     text-align: right
-  //     font-size: $xs
-
-  //   .question
-  //     display: flex
-  //     justify-content: flex-start
-  //     width: 90%
-  //     margin: 0 auto
-      
-      
-
-  //     .lamp-icon
-  //       width: 50px
-  //       color: $bluew
-  //       background: $blued
-  //       align-self: stretch
-  //       display: flex
-  //       justify-content: center
-  //       align-items: center
-
-  //     .question-text
-  //       background: rgba(white, 0.14)
-  //       color: $main
-  //       padding: 25px
-  //       width: 90%
-  //       text-align: left
-  //       align-self: stretch
-      
-  //     .bar-right
-  //       background-image: linear-gradient(-220deg, #DD8EDA 11%, #42A3F9 100%)
-  //       width: 3px
-  //       align-self: stretch
       
 .main-win
   width: 700px
@@ -94,8 +36,8 @@ body
   box-shadow: 0 70px 90px -60px black
   margin: 0 auto
   display: grid
-  grid-template-columns: 50px auto 50px
-  grid-template-rows: 50px auto 1fr auto 50px
+  grid-template-columns: $xxl auto $xxl
+  grid-template-rows: $xxl auto 1fr auto $xxl
   grid-template-areas:  ' . . . '   ' . question-c . ' ' . answers . ' ' . your-answer-c .' ' . . . '
     
     
@@ -114,7 +56,7 @@ body
   .question
     margin-bottom: 30px
     display: grid
-    grid-template-columns: 50px 1fr 3px
+    grid-template-columns: $xxl 1fr 3px
     grid-template-rows: auto 
     grid-template-areas:  ' lamp-icon question-text bar-right ' 
 
@@ -145,7 +87,7 @@ body
   .answer-c
     margin-bottom: 30px
     display: grid
-    grid-template-columns: 50px  1fr
+    grid-template-columns: $xxl  1fr
     grid-template-areas:  ' answer-num answer ' 
 
     .answer-num
@@ -161,6 +103,10 @@ body
         height: 20px
         width: 20px
         color: $main
+        font-size: $s
+        display: flex
+        justify-content: center
+        align-items: center
 
     .answer
       background-image: linear-gradient(225deg, rgba(#DD8EDA, 1) 11%, rgba(#42A3F9, 1) 100%)
@@ -169,11 +115,12 @@ body
       grid-area: answer
       
       display: grid
-      grid-template-columns: 50px 1fr 3px
+      grid-template-columns: $xxl 1fr 3px
       grid-template-rows: auto 
       grid-template-areas:  ' counter answer-text bar-right ' 
 
       .counter
+          font-weight: bolder
           display: flex
           justify-content: center
           align-items: center
@@ -184,6 +131,7 @@ body
           color: rgba($bg, 0.7)
           padding: 40px 25px 
           margin: 0
+          font-size: 15px
           text-align: left
           grid-area: answer-text
         
@@ -200,7 +148,7 @@ body
   margin-top: 20px
   grid-area: your-answer-c
   display: grid
-  grid-template-columns: 50px 1fr 3px
+  grid-template-columns: $xxl 1fr 3px
   grid-template-rows: auto 
   grid-template-areas:  ' your-lamp-icon form  ' 
 
@@ -227,7 +175,7 @@ body
       grid-area: input
       background: rgba(white, 0.7)
       border: none
-      font-size: $m
+      font-size: $s
       color: rgba($bgd, 0.7)
       outline: none
       padding-left: 15px
