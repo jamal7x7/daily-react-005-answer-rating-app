@@ -8,7 +8,100 @@ const Header = () => (
   </header>
 )
 
+const Answer = (props) => (
+
+  <div className='answer-c'>
+    <div className='answer-num'>
+      <div className='answer-num-icon'>{props.i + 1}</div>
+    </div>
+    <div className='answer'>
+      <div className='counter'>{props.counter}</div>
+      <p className='answer-text'>
+        {props.answerText}
+      </p>
+      <div className='bar-right' />
+    </div>
+  </div>
+
+)
+
+
+
+const YourAnswerC = (props) => (
+
+  <div className='your-answer-c'>
+    <div className='your-lamp-icon'>
+      <svg width='14' height='20' viewBox='0 0 14 20' xmlns='http://www.w3.org/2000/svg'>
+        <g id='Page-1' fill='none' fillRule='evenodd' opacity='0.6'>
+          <g id='Desktop-HD-Copy' transform='translate(-439 -761)' fill='#FFF'>
+            <path d='M445.894531,761 C446.858078,761 447.759761,761.185545 448.599609,761.556641 C449.439457,761.927736 450.168617,762.429033 450.787109,763.060547 C451.405602,763.69206 451.893878,764.434241 452.251953,765.287109 C452.610028,766.139978 452.789062,767.048172 452.789062,768.011719 C452.789062,769.378913 452.528648,770.420569 452.007812,771.136719 C451.486977,771.852868 450.946617,772.458331 450.386719,772.953125 C449.97005,773.31771 449.638022,773.633462 449.390625,773.900391 C449.143228,774.167319 449.019531,774.489581 449.019531,774.867188 L449.019531,775.921875 C449.019531,775.934896 449.016276,775.947917 449.009766,775.960938 C449.003255,775.973958 449,775.986979 449,776 L449.019531,776 L449.019531,777.816406 C449.019531,778.766932 448.733076,779.535153 448.160156,780.121094 C447.587237,780.707034 446.838546,781 445.914062,781 C444.963537,781 444.201826,780.707034 443.628906,780.121094 C443.055987,779.535153 442.769531,778.766932 442.769531,777.816406 L442.769531,776 L442.789062,776 C442.789062,775.986979 442.785807,775.973958 442.779297,775.960938 C442.772786,775.947917 442.769531,775.934896 442.769531,775.921875 L442.769531,774.867188 C442.769531,774.61979 442.658855,774.382163 442.4375,774.154297 C442.216145,773.926431 441.923179,773.649741 441.558594,773.324219 C440.998695,772.816404 440.432295,772.168624 439.859375,771.380859 C439.286455,770.593095 439,769.470059 439,768.011719 C439,767.048172 439.179035,766.139978 439.537109,765.287109 C439.895184,764.434241 440.38346,763.69206 441.001953,763.060547 C441.620446,762.429033 442.349605,761.927736 443.189453,761.556641 C444.029301,761.185545 444.930985,761 445.894531,761 Z M445.875,779.75 C446.473961,779.75 446.939451,779.580731 447.271484,779.242188 C447.603517,778.903644 447.769531,778.428388 447.769531,777.816406 L447.769531,776.957031 C447.548176,777.035157 447.281252,777.103515 446.96875,777.162109 C446.656248,777.220703 446.298179,777.25 445.894531,777.25 C445.477863,777.25 445.116538,777.223959 444.810547,777.171875 C444.504556,777.119791 444.240887,777.054688 444.019531,776.976562 L444.019531,777.816406 C444.019531,778.415368 444.18229,778.887368 444.507812,779.232422 C444.833335,779.577476 445.28906,779.75 445.875,779.75 Z'
+              id='-copy' />
+          </g>
+        </g>
+      </svg>
+    </div>
+    <form onSubmit={props.handleYourAnswer}>
+      <input type='text' placeholder='Type your answer here' name='yourAnswerText'/>
+      <button>Answer</button>
+    </form>
+  </div>
+
+)
+
+const AnswerC = (props) => (
+  <div className='answers'>
+
+    {props.answers.map( (e, i) => (
+
+      <Answer 
+        key = {i}
+        i = {props.answers.indexOf(props.answers[i])}
+        answers={props.answers}
+        answerText = {props.answers[i].answerText}
+        counter = {props.answers[i].counter}
+      />
+
+    ))
+  }
+
+</div>
+)
+
+
+
 class App extends Component {
+  
+  state = {
+    answers: [
+      {
+        counter: 17,
+        answerText: 'I use a bunch of them and in my opinion, the best yet to come is still the good old vanilla js! but,  answering your question, try React because It’s easy and it’s fast to create projects with.'
+      },
+      {
+        counter: 0,
+        answerText: 'My answer: None.'
+      },
+    ]
+  }
+  
+  handleYourAnswer = (e) => {
+    e.preventDefault()
+    let v = e.target.elements.yourAnswerText.value.trim()
+    this.setState( (prevState) => (prevState.answers.push ({
+            counter: 0,
+            answerText: v
+          }
+        )
+      )
+    )
+
+    e.target.elements.yourAnswerText.value = ''
+
+    
+  }
+  
+  
+  
   render () {
     return (
       <div className='App'>
@@ -41,53 +134,19 @@ class App extends Component {
               <div className='bar-right' />
             </div>
           </div>
-          <div className='answers'>
+        
 
-            <div className='answer-c'>
-              <div className='answer-num'>
-                <div className='answer-num-icon'>1</div>
-              </div>
-              <div className='answer'>
-                <div className='counter'>17</div>
-                <p className='answer-text'>
-                  I use a bunch of them and in my opinion, the best yet to
-                  come is still the good old vanilla js! but,  answering your question, try React because It’s easy and it’s fast to create projects with.
-                </p>
-                <div className='bar-right' />
-              </div>
-            </div>
+          <AnswerC 
+            answers={this.state.answers}
+            answerText = {this.state.answers[0].answerText}
+            counter = {this.state.answers[0].counter}
+          />
 
-            <div className='answer-c'>
-              <div className='answer-num'>
-                <div className='answer-num-icon'>2</div>
-              </div>
-              <div className='answer'>
-                <div className='counter'>0</div>
-                <p className='answer-text'>
-                  My answer: None.
-                </p>
-                <div className='bar-right' />
-              </div>
-            </div>
+          <YourAnswerC 
+            handleYourAnswer = {this.handleYourAnswer}
+          />
+         
 
-          </div>
-
-          <div className='your-answer-c'>
-            <div className='your-lamp-icon'>
-              <svg width='14' height='20' viewBox='0 0 14 20' xmlns='http://www.w3.org/2000/svg'>
-                <g id='Page-1' fill='none' fillRule='evenodd' opacity='0.6'>
-                  <g id='Desktop-HD-Copy' transform='translate(-439 -761)' fill='#FFF'>
-                    <path d='M445.894531,761 C446.858078,761 447.759761,761.185545 448.599609,761.556641 C449.439457,761.927736 450.168617,762.429033 450.787109,763.060547 C451.405602,763.69206 451.893878,764.434241 452.251953,765.287109 C452.610028,766.139978 452.789062,767.048172 452.789062,768.011719 C452.789062,769.378913 452.528648,770.420569 452.007812,771.136719 C451.486977,771.852868 450.946617,772.458331 450.386719,772.953125 C449.97005,773.31771 449.638022,773.633462 449.390625,773.900391 C449.143228,774.167319 449.019531,774.489581 449.019531,774.867188 L449.019531,775.921875 C449.019531,775.934896 449.016276,775.947917 449.009766,775.960938 C449.003255,775.973958 449,775.986979 449,776 L449.019531,776 L449.019531,777.816406 C449.019531,778.766932 448.733076,779.535153 448.160156,780.121094 C447.587237,780.707034 446.838546,781 445.914062,781 C444.963537,781 444.201826,780.707034 443.628906,780.121094 C443.055987,779.535153 442.769531,778.766932 442.769531,777.816406 L442.769531,776 L442.789062,776 C442.789062,775.986979 442.785807,775.973958 442.779297,775.960938 C442.772786,775.947917 442.769531,775.934896 442.769531,775.921875 L442.769531,774.867188 C442.769531,774.61979 442.658855,774.382163 442.4375,774.154297 C442.216145,773.926431 441.923179,773.649741 441.558594,773.324219 C440.998695,772.816404 440.432295,772.168624 439.859375,771.380859 C439.286455,770.593095 439,769.470059 439,768.011719 C439,767.048172 439.179035,766.139978 439.537109,765.287109 C439.895184,764.434241 440.38346,763.69206 441.001953,763.060547 C441.620446,762.429033 442.349605,761.927736 443.189453,761.556641 C444.029301,761.185545 444.930985,761 445.894531,761 Z M445.875,779.75 C446.473961,779.75 446.939451,779.580731 447.271484,779.242188 C447.603517,778.903644 447.769531,778.428388 447.769531,777.816406 L447.769531,776.957031 C447.548176,777.035157 447.281252,777.103515 446.96875,777.162109 C446.656248,777.220703 446.298179,777.25 445.894531,777.25 C445.477863,777.25 445.116538,777.223959 444.810547,777.171875 C444.504556,777.119791 444.240887,777.054688 444.019531,776.976562 L444.019531,777.816406 C444.019531,778.415368 444.18229,778.887368 444.507812,779.232422 C444.833335,779.577476 445.28906,779.75 445.875,779.75 Z'
-                      id='-copy' />
-                  </g>
-                </g>
-              </svg>
-            </div>
-            <form action=''>
-              <input type='text' placeholder='Type your answer here' />
-              <button>Answer</button>
-            </form>
-          </div>
 
           {/* <div className='v-line' /> */}
 
