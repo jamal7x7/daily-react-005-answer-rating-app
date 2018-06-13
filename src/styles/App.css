@@ -168,7 +168,13 @@ body {
 }
 
 .your-answer-c form input::placeholder {
-  color: rgba(66, 163, 249, 0.4);
+  color: rgba(66, 163, 249, 0.7);
+}
+
+.your-answer-c form input:focus::placeholder {
+  color: rgba(66, 163, 249, 0.6);
+  position: absolute;
+  transform: translateX(5px);
 }
 
 .your-answer-c form button {

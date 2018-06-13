@@ -180,8 +180,11 @@ body
       outline: none
       padding-left: 15px
       &::placeholder
-        color: rgba(#42A3F9, 0.4)
-      
+        color: rgba(#42A3F9, 0.7)
+      &:focus::placeholder
+        color: rgba(#42A3F9, 0.6)
+        position: absolute
+        transform: translateX(5px)
     button
       grid-area: button
       border: none
