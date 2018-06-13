@@ -110,7 +110,7 @@ class App extends Component {
         <div className='main-win' >
 
           <div className='question-c' >
-            <p className='answers-num'>2 Answers</p>
+            <p className='answers-num'>{this.state.answers.length + ' Answers'} </p>
             <div className='question'>
               <div className='lamp-icon'>
 
